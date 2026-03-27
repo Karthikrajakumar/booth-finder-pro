@@ -39,6 +39,13 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        map: {
+          highlight: "hsl(var(--map-highlight))",
+          "tooltip-bg": "hsl(var(--map-tooltip-bg))",
+          "tooltip-fg": "hsl(var(--map-tooltip-fg))",
+          booth: "hsl(var(--map-booth))",
+          "booth-hover": "hsl(var(--map-booth-hover))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
