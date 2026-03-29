@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { booths } from "@/data/booths";
+import { Link } from "react-router-dom";
 
 // Fix default marker icon issue in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -58,6 +59,9 @@ const ConstituencyMap = () => {
           <p className="text-primary-foreground/70 text-sm mt-1">
             Oulgaret Municipality — 39 Polling Booths
           </p>
+          <Link to="/nellithope" className="inline-block mt-2 text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
+            → View Nellithope Constituency
+          </Link>
         </div>
       </header>
 

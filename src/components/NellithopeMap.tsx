@@ -3,6 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { nellithopeBooths } from "@/data/nellithope-booths";
+import { Link } from "react-router-dom";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
@@ -56,6 +57,9 @@ const NellithopeMap = () => {
           <p className="text-primary-foreground/70 text-sm mt-1">
             Puducherry Union — 31 Polling Booths
           </p>
+          <Link to="/" className="inline-block mt-2 text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
+            ← View Kamaraj Nagar Constituency
+          </Link>
         </div>
       </header>
 
