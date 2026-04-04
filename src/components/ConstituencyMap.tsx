@@ -59,9 +59,14 @@ const ConstituencyMap = () => {
           <p className="text-primary-foreground/70 text-sm mt-1">
             Oulgaret Municipality — 39 Polling Booths
           </p>
-          <Link to="/nellithope" className="inline-block mt-2 text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
-            → View Nellithope Constituency
-          </Link>
+          <div className="flex gap-2 mt-2">
+            <Link to="/nellithope" className="inline-block text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
+              → Nellithope
+            </Link>
+            <Link to="/lalgudi" className="inline-block text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
+              → Lalgudi
+            </Link>
+          </div>
         </div>
       </header>
 
