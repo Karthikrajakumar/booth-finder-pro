@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { booths } from "@/data/booths";
+import { lalgudiBooths } from "@/data/lalgudi-booths";
 import { Link } from "react-router-dom";
 
-// Fix default marker icon issue in react-leaflet
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 
 const createBoothIcon = (id: number, isActive: boolean) => {
@@ -34,7 +33,7 @@ const FlyToActive = ({ activeBoothId }: { activeBoothId: number | null }) => {
   const map = useMap();
   useEffect(() => {
     if (activeBoothId !== null) {
-      const booth = booths.find((b) => b.id === activeBoothId);
+      const booth = lalgudiBooths.find((b) => b.id === activeBoothId);
       if (booth) {
         map.flyTo([booth.lat, booth.lng], map.getZoom(), { duration: 0.5 });
       }
@@ -43,40 +42,38 @@ const FlyToActive = ({ activeBoothId }: { activeBoothId: number | null }) => {
   return null;
 };
 
-const ConstituencyMap = () => {
+const LalgudiMap = () => {
   const [activeBoothId, setActiveBoothId] = useState<number | null>(null);
 
-  // Center of constituency
-  const center: [number, number] = [11.9520, 79.8080];
+  const center: [number, number] = [10.8711, 78.8197];
 
   return (
     <div className="min-h-screen bg-background">
       <header className="bg-primary text-primary-foreground py-5 px-6 shadow-lg">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-            Kamaraj Nagar Constituency
+            Lalgudi Constituency
           </h1>
           <p className="text-primary-foreground/70 text-sm mt-1">
-            Oulgaret Municipality — 39 Polling Booths
+            Tiruchirappalli District — 249 Polling Booths
           </p>
           <div className="flex gap-2 mt-2">
+            <Link to="/" className="inline-block text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
+              ← Kamaraj Nagar
+            </Link>
             <Link to="/nellithope" className="inline-block text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
               → Nellithope
-            </Link>
-            <Link to="/lalgudi" className="inline-block text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
-              → Lalgudi
             </Link>
           </div>
         </div>
       </header>
 
       <div className="max-w-7xl mx-auto p-4 md:p-6 flex flex-col lg:flex-row gap-6">
-        {/* Map */}
         <div className="flex-1 min-w-0">
           <div className="rounded-xl overflow-hidden border border-border shadow-md" style={{ height: "75vh" }}>
             <MapContainer
               center={center}
-              zoom={16}
+              zoom={12}
               scrollWheelZoom={true}
               style={{ height: "100%", width: "100%" }}
               zoomControl={true}
@@ -86,7 +83,7 @@ const ConstituencyMap = () => {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               />
               <FlyToActive activeBoothId={activeBoothId} />
-              {booths.map((booth) => (
+              {lalgudiBooths.map((booth) => (
                 <Marker
                   key={booth.id}
                   position={[booth.lat, booth.lng]}
@@ -109,16 +106,15 @@ const ConstituencyMap = () => {
           </div>
         </div>
 
-        {/* Booth List Sidebar */}
         <aside className="lg:w-80 shrink-0">
           <div className="sticky top-4 rounded-xl border border-border bg-card shadow-md overflow-hidden">
             <div className="bg-primary px-4 py-3">
               <h2 className="text-primary-foreground font-semibold text-sm">
-                All Booths ({booths.length})
+                All Booths ({lalgudiBooths.length})
               </h2>
             </div>
             <div className="max-h-[70vh] overflow-y-auto">
-              {booths.map((booth) => (
+              {lalgudiBooths.map((booth) => (
                 <div
                   key={booth.id}
                   className={`px-4 py-2.5 border-b border-border/50 cursor-pointer transition-colors duration-150 ${
@@ -148,4 +144,4 @@ const ConstituencyMap = () => {
   );
 };
 
-export default ConstituencyMap;
+export default LalgudiMap;

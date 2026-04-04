@@ -57,9 +57,14 @@ const NellithopeMap = () => {
           <p className="text-primary-foreground/70 text-sm mt-1">
             Puducherry Union — 31 Polling Booths
           </p>
-          <Link to="/" className="inline-block mt-2 text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
-            ← View Kamaraj Nagar Constituency
-          </Link>
+          <div className="flex gap-2 mt-2">
+            <Link to="/" className="inline-block text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
+              ← Kamaraj Nagar
+            </Link>
+            <Link to="/lalgudi" className="inline-block text-xs bg-primary-foreground/20 hover:bg-primary-foreground/30 text-primary-foreground px-3 py-1 rounded-full transition-colors">
+              → Lalgudi
+            </Link>
+          </div>
         </div>
       </header>
 
